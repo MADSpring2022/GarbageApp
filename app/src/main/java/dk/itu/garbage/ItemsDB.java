@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ItemDB {
+public class ItemsDB {
     private List<Item> ItemsDB= new ArrayList<>();
 
-    public ItemDB() {
+    public ItemsDB() {
 
     }
 
-    // listItems modified to take input from TextEdit
+    // listItems takes input from TextEdit and checks Item object for equality
     public String listItems(String input) {
         String r = "";
         for(Item i: ItemsDB) {
