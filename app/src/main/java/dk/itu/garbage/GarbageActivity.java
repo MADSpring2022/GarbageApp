@@ -12,22 +12,23 @@ public class GarbageActivity extends AppCompatActivity {
     private Button listItems;
     private TextView item;
 
-    private ItemsDB itemsDB;
+    private ItemsDB itemDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garbage);
 
-        itemsDB = new ItemsDB();
-        itemsDB.fillItemsDB();
+        itemDB = new ItemsDB();
+        itemDB.fillItemsDB();
 
         item = findViewById(R.id.input_text);
         listItems = findViewById(R.id.where_button);
 
-        listItems.setOnClickListener((View v) -> {
-            item.setText(itemsDB.listItems(item.getText().toString()));
-        });
+        //expression lambda (instead of lambda statement)
+        listItems.setOnClickListener((View v) ->
+            item.setText(itemDB.listItems(item.getText().toString()))
+        );
 
 
 
