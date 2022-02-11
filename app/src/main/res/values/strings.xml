@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Garbage Sorting</string>
+    <string name="app_name">Garbage Sorting V2</string>
+    <string name="what_item">What item?</string>
+    <string name="where_item">Where?</string>
 </resources>

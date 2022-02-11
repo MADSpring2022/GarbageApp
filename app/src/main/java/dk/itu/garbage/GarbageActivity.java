@@ -2,6 +2,7 @@ package dk.itu.garbage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 
 public class GarbageActivity extends AppCompatActivity {
     //GUI variables
-    private Button listItems;
+    private Button searchItems, toAddItem;
     private TextView item;
 
     private ItemsDB itemDB;
@@ -23,12 +24,19 @@ public class GarbageActivity extends AppCompatActivity {
         itemDB.fillItemsDB();
 
         item = findViewById(R.id.input_text);
-        listItems = findViewById(R.id.where_button);
+        searchItems = findViewById(R.id.where_button);
+
+        toAddItem = findViewById(R.id.to_add_item);
 
         //expression lambda (instead of lambda statement)
-        listItems.setOnClickListener((View v) ->
+        searchItems.setOnClickListener((View searchBtn) ->
             item.setText(itemDB.listItems(item.getText().toString()))
         );
+
+        toAddItem.setOnClickListener((View toAddBtn) -> {
+            Intent intent = new Intent(GarbageActivity.this, AddingActivity.class);
+            startActivity(intent);
+                });
 
 
 
