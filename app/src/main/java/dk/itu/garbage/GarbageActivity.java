@@ -20,8 +20,8 @@ public class GarbageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garbage);
 
-        itemDB = new ItemsDB();
-        itemDB.fillItemsDB();
+        ItemsDB.initialize();
+        itemDB = ItemsDB.get();
 
         item = findViewById(R.id.input_text);
         searchItems = findViewById(R.id.where_button);
@@ -30,9 +30,10 @@ public class GarbageActivity extends AppCompatActivity {
 
         //expression lambda (instead of lambda statement)
         searchItems.setOnClickListener((View searchBtn) ->
-            item.setText(itemDB.listItems(item.getText().toString()))
+            item.setText(itemDB.searchItems(item.getText().toString()))
         );
 
+        //intent on click starting new activity AddingActivity
         toAddItem.setOnClickListener((View toAddBtn) -> {
             Intent intent = new Intent(GarbageActivity.this, AddingActivity.class);
             startActivity(intent);

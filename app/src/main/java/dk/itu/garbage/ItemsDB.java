@@ -5,33 +5,46 @@ import java.util.List;
 
 
 public class ItemsDB {
+    private static ItemsDB sItemsDB;
     private List<Item> ItemsDB= new ArrayList<>();
 
-    public ItemsDB() {
-
+    private ItemsDB() {
+        fillItemsDB();
     }
 
-    // listItems takes input from TextEdit and checks Item object for equality
-    public String listItems(String input) {
-        String r = "";
+    public static void initialize() {
+        if (sItemsDB == null) sItemsDB = new ItemsDB();
+    }
+
+    public static ItemsDB get() {
+        if (sItemsDB == null) {
+            throw new IllegalStateException("ItemsDB must be initialized");
+        }
+        return sItemsDB;
+    }
+
+
+    // takes input from TextEdit and searches Item object for equality
+    public String searchItems(String input) {
+        String dbItem = "";
         for(Item i: ItemsDB) {
             if (input.equals(i.getWhat())) {
-               r = i.toString();
+               dbItem = i.toString();
             }
         }
 
-        if (r.equals("")) {
-            r = input + " should be placed in: not found";
+        if (dbItem.equals("")) {
+            dbItem = input + " should be placed in: not found";
         }
 
-        return r;
+        return dbItem;
     }
 
     public void addItem(String what, String where) {
         ItemsDB.add(new Item(what, where));
     }
 
-    public void fillItemsDB() {
+    private void fillItemsDB() {
         ItemsDB.add(new Item("coffee", "Bio"));
         ItemsDB.add(new Item("carrots", "Bio"));
         ItemsDB.add(new Item("milk carton", "Residual Waste"));
