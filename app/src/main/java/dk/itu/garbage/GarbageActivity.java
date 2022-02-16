@@ -20,7 +20,7 @@ public class GarbageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garbage);
 
-        ItemsDB.initialize();
+        ItemsDB.initialize(GarbageActivity.this);
         itemDB = ItemsDB.get();
 
         item = findViewById(R.id.input_text);

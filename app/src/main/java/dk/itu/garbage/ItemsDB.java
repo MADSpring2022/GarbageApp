@@ -1,5 +1,10 @@
 package dk.itu.garbage;
 
+import android.content.Context;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,12 +15,12 @@ public class ItemsDB {
     private Map<String, String> itemsDB = new HashMap<>();
 
     //declaring access modifier of constructor private
-    private ItemsDB() {
-        fillItemsDB();
+    private ItemsDB(Context context) {
+        fillItemsDB(context);
     }
 
-    public static void initialize() {
-        if (sItemsDB == null) sItemsDB = new ItemsDB();
+    public static void initialize(Context context) {
+        if (sItemsDB == null) sItemsDB = new ItemsDB(context);
     }
 
     public static ItemsDB get() {
@@ -41,15 +46,13 @@ public class ItemsDB {
         itemsDB.put(what, where);
     }
 
-    private void fillItemsDB() {
+    private void fillItemsDB(Context context) {
         //get items and categories from file
-        itemsDB.put("coffee", "Bio");
-        itemsDB.put("carrots", "Bio");
-        itemsDB.put("milk carton", "Residual Waste");
-        itemsDB.put("bread", "Bio");
-        itemsDB.put("butter", "Bio");
-        itemsDB.put("peanut butter", "Bio");
-        itemsDB.put("phone", "Electronic Waste");
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("items.txt")));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
 }
