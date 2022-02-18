@@ -12,11 +12,11 @@ import java.util.Map;
 public class ItemsDB {
     //a static factory method with the return type as an object of this singleton class
     private static ItemsDB sItemsDB;
-    private Map<String, String> itemsDB = new HashMap<>();
+    private Map<String, String> itemsMap = new HashMap<>();
 
     //declaring access modifier of constructor private
     private ItemsDB(Context context) {
-        fillItemsDB(context);
+        fillItemsDB(context, "items.txt");
     }
 
     public static void initialize(Context context) {
@@ -30,12 +30,14 @@ public class ItemsDB {
         return sItemsDB;
     }
 
+    //other methods: getItemsDB, size and getWhere
+
 
     // takes input from TextEdit and searches Item object for equality
     public String searchItems(String input) {
         String dbItem = "";
-        if (itemsDB.containsKey(input.toLowerCase().trim())) {
-           dbItem = input + " should be placed in: " + itemsDB.get(input);
+        if (itemsMap.containsKey(input.toLowerCase().trim())) {
+           dbItem = input + " should be placed in: " + itemsMap.get(input);
            return dbItem;
         }
 
@@ -43,13 +45,24 @@ public class ItemsDB {
     }
 
     public void addItem(String what, String where) {
-        itemsDB.put(what, where);
+        itemsMap.put(what, where);
     }
 
-    private void fillItemsDB(Context context) {
+    /** The map of the ItemsDB, should be filled with the category/items from file in assets folder */
+    private void fillItemsDB(Context context, String filename) {
         //get items and categories from file
         try {
+            //read file
             BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("items.txt")));
+
+            //while there is something in the file
+            while (reader.readLine() != null) {
+                // assign input to array, split at white space
+                String[] itemsFile = reader.readLine().split(" ");
+                // put the the input into the map ofItemsDB as k/v pair
+                itemsMap.put(itemsFile[0], itemsFile[1]);
+            }
+
         } catch (IOException e) {
             System.out.println(e);
         }
