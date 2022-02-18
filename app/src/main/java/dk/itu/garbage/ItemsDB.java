@@ -12,11 +12,11 @@ import java.util.Map;
 public class ItemsDB {
     //a static factory method with the return type as an object of this singleton class
     private static ItemsDB sItemsDB;
-    private Map<String, String> itemsMap = new HashMap<>();
+    private final Map<String, String> itemsMap = new HashMap<>();
 
     //declaring access modifier of constructor private
     private ItemsDB(Context context) {
-        fillItemsDB(context, "items.txt");
+        fillItemsDB(context, "garbage.txt");
     }
 
     public static void initialize(Context context) {
@@ -30,19 +30,23 @@ public class ItemsDB {
         return sItemsDB;
     }
 
-    //other methods: getItemsDB, size and getWhere
+    //other methods: size and getWhere
+
+    public Map<String, String> getItemsDBMap() {
+        return itemsMap;
+    }
 
 
     // takes input from TextEdit and searches Item object for equality
     public String searchItems(String input) {
-        String dbItem = "";
+        String dbItem;
         if (itemsMap.containsKey(input.toLowerCase().trim())) {
            dbItem = input + " should be placed in: " + itemsMap.get(input);
            return dbItem;
         }
-
         return input + " not found";
     }
+
 
     public void addItem(String what, String where) {
         itemsMap.put(what, where);
@@ -53,14 +57,18 @@ public class ItemsDB {
         //get items and categories from file
         try {
             //read file
-            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("items.txt")));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
 
+            //assign the return value of readLine to variable.
+            String line = reader.readLine();
             //while there is something in the file
-            while (reader.readLine() != null) {
+            while (line != null) {
                 // assign input to array, split at white space
-                String[] itemsFile = reader.readLine().split(" ");
+                String[] itemsFile = line.toLowerCase().split(",");
                 // put the the input into the map ofItemsDB as k/v pair
                 itemsMap.put(itemsFile[0], itemsFile[1]);
+                //get content of next line
+                line = reader.readLine();
             }
 
         } catch (IOException e) {

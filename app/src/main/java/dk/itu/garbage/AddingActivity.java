@@ -9,13 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 public class AddingActivity extends AppCompatActivity {
     //GUI
     private EditText inputWhat, inputWhere;
     private Button addButton;
-    private TextView test;
 
     //db
     private static ItemsDB itemsDB;
