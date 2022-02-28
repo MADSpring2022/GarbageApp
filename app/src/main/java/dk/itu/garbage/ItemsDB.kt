@@ -47,11 +47,13 @@ class ItemsDB {
     }
 
     private fun fillItemsDB() {
-        itemsMap["coffee"] = "Irma"
-        itemsMap["carrots"] = "Netto"
-        itemsMap["milk"] = "Netto"
-        itemsMap["bread"] = "bakery"
-        itemsMap["butter"] = "Irma"
+        itemsMap["coffee"] = "Bio"
+        itemsMap["carrots"] = "Bio"
+        itemsMap["milk carton"] = "Residual Waste"
+        itemsMap["bread"] = "Bio"
+        itemsMap["butter"] = "Bio"
+        itemsMap["peanut butter"] = "Bio"
+        itemsMap["phone"] = "Electronic Waste"
 
 
         /*
