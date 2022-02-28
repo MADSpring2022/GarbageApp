@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GarbageAppV1</string>
+    <string name="where_to_place_item">Where to place item</string>
+    <string name="Where">Where</string>
+</resources>

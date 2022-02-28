@@ -1,0 +1,7 @@
+An on-click listener is an interface in the View class, which respond when the user types or clicks on thethe is is  is button or clickable object in User Interface.
+It works somehow like the Scanner in Java, I would say, but the main difference is that this is an active function, is “listening” or
+in other words waiting for the user input. There must be coordination between input and output, so the term concurrency is very much relevant
+while talking about listeners.
+
+My on click-listener describes what the where_button does and how the edit text in the layout must respond when the input is done, based on the matcher method
+which compares the input text with database items and respond accordingly to the request - if item is the the same answer nr1, if item different - answer nr2.
