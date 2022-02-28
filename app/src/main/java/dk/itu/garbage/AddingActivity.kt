@@ -30,8 +30,8 @@ class AddingActivity : AppCompatActivity() {
         addButton = findViewById(R.id.add_new_item)
 
         addButton.setOnClickListener {
-            val what = inputWhat.text.toString()
-            val where = inputWhere.text.toString()
+            val what = inputWhat.text.toString().lowercase().trim()
+            val where = inputWhere.text.toString().lowercase().trim()
 
             if ((what.isNotEmpty()) && (where.isNotEmpty())) {
                 itemsDB.addItem(what, where)

@@ -1,6 +1,8 @@
 package dk.itu.garbage
 
 import java.util.HashMap
+import java.io.File
+import java.io.BufferedReader
 
 class ItemsDB {
     // val is equivalent to finale
@@ -44,14 +46,28 @@ class ItemsDB {
         itemsMap[what] = where
     }
 
-
-
-
     private fun fillItemsDB() {
         itemsMap["coffee"] = "Irma"
         itemsMap["carrots"] = "Netto"
         itemsMap["milk"] = "Netto"
         itemsMap["bread"] = "bakery"
         itemsMap["butter"] = "Irma"
+
+
+        /*
+        val reader : BufferedReader = File("src/main/assets/garbage.txt").bufferedReader()
+        val lineList = mutableListOf<String>()
+        reader.useLines {
+            lines -> lines.forEach {
+                lineList.add(it)
+            }
+            lineList.forEach {
+                val line = it.split(",")
+                itemsMap[line[0]] = line[1]
+            }
+        }
+        */
     }
+
 }
+
