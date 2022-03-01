@@ -1,23 +1,24 @@
 package dk.itu.garbage
 
+import android.content.Context
 import java.util.HashMap
-import java.io.File
 import java.io.BufferedReader
+import java.io.IOException
 
-class ItemsDB {
+class ItemsDB(context: Context) {
     // val is equivalent to finale
     private val itemsMap : HashMap<String, String> = HashMap<String, String>()
 
     init {
-        fillItemsDB();
+        fillItemsDB(context, "garbage.txt")
     }
 
     companion object {
         private var sItemsDB : ItemsDB? = null
 
-        fun initialize() {
+        fun initialize(context: Context) {
             if (sItemsDB == null) {
-                sItemsDB = ItemsDB()
+                sItemsDB = ItemsDB(context)
             }
         }
 
@@ -37,7 +38,7 @@ class ItemsDB {
         if (itemsMap.containsKey(input)) {
             // use indexing with map
             dbItem = "$input should be placed in: ${itemsMap[input]}"
-            return "$dbItem"
+            return dbItem
         }
         return "$input not found"
     }
@@ -46,14 +47,27 @@ class ItemsDB {
         itemsMap[what] = where
     }
 
-    private fun fillItemsDB() {
-        itemsMap["coffee"] = "Bio"
-        itemsMap["carrots"] = "Bio"
-        itemsMap["milk carton"] = "Residual Waste"
-        itemsMap["bread"] = "Bio"
-        itemsMap["butter"] = "Bio"
-        itemsMap["peanut butter"] = "Bio"
-        itemsMap["phone"] = "Electronic Waste"
+    private fun fillItemsDB(context: Context, filename : String) {
+            //get items and categories from file
+            try {
+                //read file
+                var reader : BufferedReader = context.assets.open(filename).bufferedReader()
+                //assign the return value of readLine to variable.
+                var line = reader.readLine();
+                //while there is something in the file
+                while (line != null) {
+                    // assign input to array, split at white space
+                    val itemsFile = line.lowercase().split(",");
+                    // put the the input into the map ofItemsDB as k/v pair
+                    itemsMap[itemsFile[0]] = itemsFile[1]
+                    //get content of next line
+                    line = reader.readLine();
+                }
+            } catch (e : IOException) {
+                println(e)
+            }
+        }
+
 
 
         /*
@@ -69,7 +83,7 @@ class ItemsDB {
             }
         }
         */
-    }
 
 }
+
 

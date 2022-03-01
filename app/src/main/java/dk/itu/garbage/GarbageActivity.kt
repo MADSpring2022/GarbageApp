@@ -19,7 +19,7 @@ class GarbageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_garbage)
 
-        ItemsDB.initialize()
+        ItemsDB.initialize(this)
         itemsDB = ItemsDB.get()
 
         item = findViewById(R.id.input_text)
