@@ -1,6 +1,8 @@
 package dk.itu.garbage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class GarbageActivity extends AppCompatActivity {
-    //GUI variables
-    private Button searchItems, toAddItem;
-    private TextView item;
+    //GUI moved to Fragments
 
-    private ItemsDB itemDB;
+    //Using Fragments
+    private FragmentManager fm;
+    Fragment fragmentUI, fragmentList;
+
+    //db
+    private static ItemsDB itemDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +27,23 @@ public class GarbageActivity extends AppCompatActivity {
 
         ItemsDB.initialize(GarbageActivity.this);
         itemDB = ItemsDB.get();
+        fm = getSupportFragmentManager();
+        setUpFragments();
 
-        item = findViewById(R.id.input_text);
-        searchItems = findViewById(R.id.where_button);
+    }
 
-        toAddItem = findViewById(R.id.to_add_item);
+    private void setUpFragments() {
+        fragmentUI = fm.findFragmentById(R.id.container_ui);
+        fragmentUI = fm.findFragmentById(R.id.container_list);
 
-        //expression lambda (instead of lambda statement)
-        searchItems.setOnClickListener((View searchBtn) ->
-            item.setText(itemDB.searchItems(item.getText().toString()))
-        );
-
-        //intent on click starting new activity AddingActivity
-        toAddItem.setOnClickListener((View toAddBtn) -> {
-            Intent intent = new Intent(GarbageActivity.this, AddingActivity.class);
-            startActivity(intent);
-                });
-
-
-
+        if ((fragmentUI == null) && (fragmentList == null)) {
+            fragmentUI = new UIFragment();
+            fragmentList = new ListFragment();
+            fm.beginTransaction()
+                    .add(R.id.container_ui, fragmentUI)
+                    .add(R.id.container_list, fragmentList)
+                    .commit();
+        }
     }
 
 

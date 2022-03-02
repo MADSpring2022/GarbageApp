@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Garbage">
         <activity
-            android:name=".AddingActivity"
-            android:exported="false" />
-        <activity
             android:name=".GarbageActivity"
             android:exported="true">
             <intent-filter>

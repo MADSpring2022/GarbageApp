@@ -76,4 +76,12 @@ public class ItemsDB {
         }
     }
 
+    public String listItems() {
+        String dbItems = "";
+        for (Map.Entry item : itemsMap.entrySet()) {
+            dbItems = dbItems + "\n" + item.getKey() + " should be placed in: " + item.getValue();
+        }
+        return dbItems;
+    }
+
 }
