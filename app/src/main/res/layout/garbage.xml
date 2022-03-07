@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#767272"
-    android:padding="5dp"
     android:orientation="vertical">
 
     <FrameLayout
@@ -20,6 +18,4 @@
         android:background="#6e4d50"
         android:layout_weight="1"
         />
-
-
 </LinearLayout>

@@ -6,12 +6,12 @@
 
     <FrameLayout
         android:id="@+id/container_ui"
-        android:layout_width="300dp"
+        android:layout_width="399dp"
         android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/container_list"
-        android:layout_width="wrap_content"
+        android:layout_width="399dp"
         android:layout_height="match_parent" />
 
 </LinearLayout>
