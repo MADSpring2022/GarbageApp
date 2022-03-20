@@ -2,14 +2,16 @@ package dk.itu.garbage;
 
 import android.content.Context;
 
+import androidx.lifecycle.ViewModel;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class ItemsDB {
+//now using ViewModel
+public class ItemsDB extends ViewModel {
     //a static factory method with the return type as an object of this singleton class
     private static ItemsDB sItemsDB;
     private final Map<String, String> itemsMap = new HashMap<>();
@@ -18,6 +20,11 @@ public class ItemsDB {
     private ItemsDB(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
+
+    public ItemsDB() {
+
+    }
+
 
     public static void initialize(Context context) {
         if (sItemsDB == null) sItemsDB = new ItemsDB(context);
@@ -30,7 +37,7 @@ public class ItemsDB {
         return sItemsDB;
     }
 
-    //other methods: size and getWhere
+    //other methods: getWhere
 
     public Map<String, String> getItemsDBMap() {
         return itemsMap;
@@ -47,6 +54,19 @@ public class ItemsDB {
         return input + " not found";
     }
 
+    //note: make UI for this
+    public void removeItem(String delItem) {
+        for (String i : itemsMap.keySet()) {
+            if (delItem.equals(i)) {
+                itemsMap.remove(i);
+                break; //necessary?
+            }
+        }
+    }
+
+    public int getSize() {
+        return itemsMap.size();
+    }
 
     public void addItem(String what, String where) {
         itemsMap.put(what, where);
