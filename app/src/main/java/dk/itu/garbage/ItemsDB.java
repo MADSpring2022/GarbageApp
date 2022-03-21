@@ -93,7 +93,7 @@ public class ItemsDB extends ViewModel {
     public String listItems() {
         String dbItems = "";
         for (Map.Entry item : itemsMap.entrySet()) {
-            dbItems = dbItems + "\n" + item.getKey() + " should be placed in: " + item.getValue();
+            dbItems = dbItems + item.getKey() + " should be placed in: " + item.getValue() + "\n";
         }
         return dbItems;
     }
