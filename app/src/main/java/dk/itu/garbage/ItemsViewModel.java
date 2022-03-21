@@ -26,4 +26,15 @@ public class ItemsViewModel extends ViewModel {
        items.setValue(temp);
    }
 
+   public void removeItem(String what) {
+       ItemsDB temp = items.getValue();
+       temp.removeItem(what);
+       items.setValue(temp);
+   }
+
+   //?
+   public String searchItems(String what) {
+       ItemsDB temp = items.getValue();
+       return temp.searchItems(what);
+   }
 }

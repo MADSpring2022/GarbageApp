@@ -54,7 +54,7 @@ public class ItemsDB extends ViewModel {
         return input + " not found";
     }
 
-    //note: make UI for this
+    //see also ItemsModelView
     public void removeItem(String delItem) {
         for (String i : itemsMap.keySet()) {
             if (delItem.equals(i)) {
@@ -68,6 +68,7 @@ public class ItemsDB extends ViewModel {
         return itemsMap.size();
     }
 
+    //see also ItemsModelView
     public void addItem(String what, String where) {
         itemsMap.put(what, where);
     }

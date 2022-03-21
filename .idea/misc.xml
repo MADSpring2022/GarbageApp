@@ -12,8 +12,8 @@
         <entry key="app/src/main/res/layout/fragment_items_d_b.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_kotlin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_u_i.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/garbage.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_u_i.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/garbage.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14375" />
       </map>
     </option>
