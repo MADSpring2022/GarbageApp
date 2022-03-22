@@ -39,22 +39,18 @@ public class GarbageActivity extends AppCompatActivity {
                         .add(R.id.container_ui, fragmentUI)
                         .add(R.id.container_list, fragmentList)
                         .commit();
-            } else {
-                // for portrait
-                if (fragmentUI == null) {
-                    fragmentUI = new UIFragment();
-                    fm.beginTransaction()
-                            .add(R.id.container_ui, fragmentUI)
-                            .commit();
-                }
-
             }
-
-
+        } else {
+            // for portrait, only show UI
+            if (fragmentUI == null) {
+                fragmentUI = new UIFragment();
+                fm.beginTransaction()
+                        .add(R.id.container_ui, fragmentUI)
+                        .commit();
+            }
         }
-
-
     }
 
-
 }
+
+

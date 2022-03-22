@@ -66,7 +66,7 @@
 
     <!-- Button to list all items-->
     <Button
-        android:id="@+id/list"
+        android:id="@+id/list_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
