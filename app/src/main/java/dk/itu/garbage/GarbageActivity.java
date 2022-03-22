@@ -30,13 +30,13 @@ public class GarbageActivity extends AppCompatActivity {
 
     private void setUpFragments() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            fragmentUI = fm.findFragmentById(R.id.container_ui);
+            fragmentUI = fm.findFragmentById(R.id.container_ui_land);
             fragmentList = fm.findFragmentById(R.id.container_list);
             if ((fragmentUI == null) && (fragmentList == null)) {
                 Fragment fragmentUI = new UIFragment();
                 Fragment fragmentList = new ListFragment();
                 fm.beginTransaction()
-                        .add(R.id.container_ui, fragmentUI)
+                        .add(R.id.container_ui_land, fragmentUI)
                         .add(R.id.container_list, fragmentList)
                         .commit();
             }
