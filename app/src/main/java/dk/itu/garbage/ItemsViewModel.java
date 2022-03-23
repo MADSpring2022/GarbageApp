@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.List;
+
 public class ItemsViewModel extends ViewModel {
     // only used by this class, only one can exist (belongs to the class)
     private static MutableLiveData<ItemsDB> items;
@@ -20,8 +22,7 @@ public class ItemsViewModel extends ViewModel {
        return items;
    }
 
-    /** assigns the values of items to a the ItemsDB (temp),
-     * adds the input item to temp, and assigns items to contain newly input and all prev items from ItemDB */
+    //adds the input item to temp, and assigns items to contain newly input and all prev items from ItemDB */
    public void addItem(String what, String where) {
        ItemsDB temp = items.getValue();
        temp.addItem(what, where);
@@ -33,7 +34,6 @@ public class ItemsViewModel extends ViewModel {
        temp.removeItem(what);
        items.setValue(temp);
    }
-
 
    public String searchItems(String what) {
        ItemsDB temp = items.getValue();
@@ -49,4 +49,17 @@ public class ItemsViewModel extends ViewModel {
        items.setValue(temp.get());
        return temp;
    }
+
+   public List<String> getAll() {
+       ItemsDB temp = items.getValue();
+       temp.getAll();
+       items.setValue(temp);
+       return (List<String>) temp;
+   }
+
+   public int size() {
+       return items.getValue().getSize();
+   }
+
+
 }

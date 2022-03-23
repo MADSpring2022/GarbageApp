@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //now using ViewModel
@@ -16,7 +18,7 @@ public class ItemsDB extends ViewModel {
     private static ItemsDB sItemsDB;
     private final Map<String, String> itemsMap = new HashMap<>();
 
-    //declaring access modifier of constructor private /changed to use context with AndroidViewModel
+    //declaring access modifier of constructor private
     private ItemsDB(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
@@ -26,7 +28,6 @@ public class ItemsDB extends ViewModel {
             sItemsDB = new ItemsDB(context);
         }
     }
-
 
     public static ItemsDB get() {
         if (sItemsDB == null) {
@@ -99,6 +100,15 @@ public class ItemsDB extends ViewModel {
             dbItems = dbItems + item.getKey() + " should be placed in: " + item.getValue() + "\n";
         }
         return dbItems;
+    }
+
+    //Turning map to list of String items
+    public List<String> getAll() {
+        List<String> listFromMap = new ArrayList<>();
+        for (Map.Entry <String, String> item : itemsMap.entrySet()) {
+            listFromMap.add(item.getKey() + item.getValue());
+        }
+        return listFromMap;
     }
 
 }
