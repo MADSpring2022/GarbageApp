@@ -17,11 +17,15 @@ public class ItemsDB extends ViewModel {
     private final Map<String, String> itemsMap = new HashMap<>();
 
     //declaring access modifier of constructor private /changed to use context with AndroidViewModel
-    protected ItemsDB(Context context) {
+    private ItemsDB(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
 
-
+    public static void initialize(Context context) {
+        if (sItemsDB == null) {
+            sItemsDB = new ItemsDB(context);
+        }
+    }
 
 
     public static ItemsDB get() {
@@ -31,14 +35,12 @@ public class ItemsDB extends ViewModel {
         return sItemsDB;
     }
 
-    //other methods: getWhere
-
     public Map<String, String> getItemsDBMap() {
         return itemsMap;
     }
 
-
     // takes input from TextEdit and searches Item object for equality
+    //see also ItemsModelView
     public String searchItems(String input) {
         String dbItem;
         if (itemsMap.containsKey(input.toLowerCase().trim())) {

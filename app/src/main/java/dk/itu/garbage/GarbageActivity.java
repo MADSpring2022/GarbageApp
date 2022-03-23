@@ -16,7 +16,7 @@ public class GarbageActivity extends AppCompatActivity {
     Fragment fragmentUI, fragmentList;
 
     //db
-    //private final static ItemsViewModel itemDB = new ItemsViewModel();
+    private final static ItemsViewModel itemDB = new ItemsViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,9 @@ public class GarbageActivity extends AppCompatActivity {
 
         fm = getSupportFragmentManager();
         setUpFragments();
+
+        //
+        itemDB.initialize(GarbageActivity.this);
 
     }
 
