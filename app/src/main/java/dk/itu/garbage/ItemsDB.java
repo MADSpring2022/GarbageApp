@@ -23,6 +23,7 @@ public class ItemsDB extends ViewModel {
 
 
 
+
     public static ItemsDB get() {
         if (sItemsDB == null) {
             throw new IllegalStateException("ItemsDB must be initialized");
