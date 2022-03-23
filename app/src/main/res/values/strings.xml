@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">Garbage Sorting V2</string>
+    <string name="app_name">Garbage Sorting V6</string>
     <string name="what_item">What item?</string>
-    <string name="where_item">Where?</string>
+    <string name="where_item">Where to put it?</string>
+    <string name="search_text_button">Search</string>
+    <string name="add_text_button">Add Item</string>
+    <string name="del_text_button">Delete Item</string>
+    <string name="removed">removed</string>
+    <string name="back">Back</string>
     <string name="empty_toast">One must add both and item and where to sort it.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

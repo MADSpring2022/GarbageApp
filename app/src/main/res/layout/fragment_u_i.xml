@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:background="#E6E6E6"
+    android:orientation="vertical">
+
+    <!-- What new item -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:textSize="@dimen/text_size"
+            android:text="@string/what_item"/>
+
+        <EditText
+            android:id="@+id/what_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@color/white"
+            />
+    </LinearLayout>
+
+    <!-- Where ito buy new item -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:textSize="@dimen/text_size"
+            android:text="@string/where_item" />
+
+        <EditText
+            android:id="@+id/where_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@color/white"
+            android:layout_marginBottom="5dp"/>
+    </LinearLayout>
+
+    <!-- Button to add new item-->
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/purple_500"
+        android:textSize="@dimen/text_size"
+        android:layout_gravity="center"
+        android:text="@string/add_text_button"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Button to list all items-->
+    <Button
+        android:id="@+id/list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/purple_500"
+        android:textSize="@dimen/text_size"
+        android:layout_gravity="center"
+        android:text="list Items"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Button to delete items-->
+    <Button
+        android:id="@+id/delete_item_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/purple_500"
+        android:textSize="@dimen/text_size"
+        android:layout_gravity="center"
+        android:text="@string/del_text_button"/>
+
+
+    <!-- search layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:text="Where to place item:"
+        android:textSize="@dimen/text_size" />
+
+    <EditText
+            android:id="@+id/search_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:inputType="text" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/purple_500"
+        android:textSize="@dimen/text_size"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_text_button" />
+
+</LinearLayout>
