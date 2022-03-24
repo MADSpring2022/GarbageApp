@@ -106,7 +106,7 @@ public class ItemsDB extends ViewModel {
     public List<String> getAll() {
         List<String> listFromMap = new ArrayList<>();
         for (Map.Entry <String, String> item : itemsMap.entrySet()) {
-            listFromMap.add(item.getKey() + item.getValue());
+            listFromMap.add(item.getKey() + " " + item.getValue());
         }
         return listFromMap;
     }

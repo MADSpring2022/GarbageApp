@@ -3,7 +3,6 @@ package dk.itu.garbage;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,20 +27,22 @@ public class ListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
         backButton = v.findViewById((R.id.back_button));
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
 
-        // Recyclerview setup
+        itemDB.initialize(getActivity());
+
+        // RecyclerView setup
         RecyclerView itemList = v.findViewById(R.id.list_items);
         itemList.setLayoutManager(new LinearLayoutManager(getActivity()));
         ItemAdapter mAdapter = new ItemAdapter();
         itemList.setAdapter(mAdapter);
 
-        itemDB.getValue().observe(getActivity(), itemsDB -> mAdapter.notifyDataSetChanged());
+        itemDB.getValue().observe(getActivity(), itemDB -> mAdapter.notifyDataSetChanged());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             backButton.setOnClickListener(view ->
@@ -57,22 +58,19 @@ public class ListFragment extends Fragment {
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView noTextView, whatWhereTextView;
 
-
         public ItemHolder(View itemView) {
             super(itemView);
             noTextView = itemView.findViewById(R.id.item_no);
             whatWhereTextView = itemView.findViewById(R.id.what_where_item);
+            itemView.setOnClickListener(this);
 
         }
 
-        //
         public void bind(String item, int pos) {
             noTextView.setText(" " + pos + " ");
-            whatWhereTextView.setText(itemDB.getAll().get(pos));
-
+            whatWhereTextView.setText(item);
         }
 
-        //might mess up
         @Override
         public void onClick(View v) {
             //https://stackoverflow.com/questions/5754887/accessing-view-inside-the-linearlayout-with-code
