@@ -16,6 +16,7 @@ public class ItemsViewModel extends ViewModel {
    public ItemsViewModel() {
        // items initialized at instantiation
        items = new MutableLiveData<>();
+       items.setValue(new ItemsDB());
    }
 
    public MutableLiveData<ItemsDB> getValue() {

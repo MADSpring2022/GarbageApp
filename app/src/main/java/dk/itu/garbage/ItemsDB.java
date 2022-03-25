@@ -17,13 +17,13 @@ public class ItemsDB extends ViewModel {
     //a static factory method with the return type as an object of this singleton class
     private final Map<String, String> itemsMap = new HashMap<>();
 
-    //declaring access modifier of constructor private
-    public ItemsDB(Context context) {
-        fillItemsDB(context, "garbage.txt");
+
+    public ItemsDB() {
+
     }
 
-    public static void initialize(Context context) {
-        new ItemsDB(context);
+    public void initialize(Context context) {
+        fillItemsDB(context, "garbage.txt");
     }
 
 
