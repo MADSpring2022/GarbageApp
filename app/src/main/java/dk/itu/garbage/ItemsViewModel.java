@@ -46,7 +46,7 @@ public class ItemsViewModel extends ViewModel {
        //dbs initialize method uses context passed
        temp.initialize(context);
        //the value of items is set with the context
-       items.setValue(temp.get());
+       items.setValue(temp);
        return temp;
    }
 
@@ -58,7 +58,8 @@ public class ItemsViewModel extends ViewModel {
    }
 
    public int size() {
-       return items.getValue().getSize();
+       ItemsDB temp = items.getValue();
+       return temp.getSize();
    }
 
 

@@ -15,26 +15,17 @@ import java.util.Map;
 //now using ViewModel
 public class ItemsDB extends ViewModel {
     //a static factory method with the return type as an object of this singleton class
-    private static ItemsDB sItemsDB;
     private final Map<String, String> itemsMap = new HashMap<>();
 
     //declaring access modifier of constructor private
-    private ItemsDB(Context context) {
+    public ItemsDB(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
 
     public static void initialize(Context context) {
-        if (sItemsDB == null) {
-            sItemsDB = new ItemsDB(context);
-        }
+        new ItemsDB(context);
     }
 
-    public static ItemsDB get() {
-        if (sItemsDB == null) {
-            throw new IllegalStateException("ItemsDB must be initialized");
-        }
-        return sItemsDB;
-    }
 
     public Map<String, String> getItemsDBMap() {
         return itemsMap;

@@ -63,7 +63,6 @@ public class ListFragment extends Fragment {
             noTextView = itemView.findViewById(R.id.item_no);
             whatWhereTextView = itemView.findViewById(R.id.what_where_item);
             itemView.setOnClickListener(this);
-
         }
 
         public void bind(String item, int pos) {
