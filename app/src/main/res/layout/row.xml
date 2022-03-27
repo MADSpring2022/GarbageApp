@@ -8,12 +8,16 @@
     <TextView
         android:id="@+id/item_no"
         android:layout_width="match_parent"
-        android:layout_height="21dp"/>
+        android:layout_height="21dp"
+        android:layout_weight="9"
+        android:textSize="15sp"/>
 
     <!-- one line constituted by what and where -->
 
     <TextView
         android:id="@+id/what_where_item"
         android:layout_width="match_parent"
-        android:layout_height="21dp" />
+        android:layout_height="21dp"
+        android:layout_weight="1"
+        android:textSize="15sp"/>
 </LinearLayout>

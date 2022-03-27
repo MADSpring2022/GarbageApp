@@ -51,11 +51,9 @@ public class ItemsViewModel extends ViewModel {
        return temp;
    }
 
-   public List<String> getAll() {
+   public List<String> getAsList() {
        ItemsDB temp = items.getValue();
-       temp.getAll();
-       items.setValue(temp);
-       return (List<String>) temp;
+       return temp.getAsList();
    }
 
    public int size() {

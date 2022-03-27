@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 //now using ViewModel
 public class ItemsDB extends ViewModel {
     //a static factory method with the return type as an object of this singleton class
-    private final Map<String, String> itemsMap = new HashMap<>();
+    private final Map<String, String> itemsMap = new LinkedHashMap<>();
 
 
     public ItemsDB() {
@@ -94,10 +95,10 @@ public class ItemsDB extends ViewModel {
     }
 
     //Turning map to list of String items
-    public List<String> getAll() {
+    public List<String> getAsList() {
         List<String> listFromMap = new ArrayList<>();
-        for (Map.Entry <String, String> item : itemsMap.entrySet()) {
-            listFromMap.add(item.getKey() + " " + item.getValue());
+        for (Map.Entry item : itemsMap.entrySet()) {
+            listFromMap.add(item.getKey() + " should be placed in: " + item.getValue());
         }
         return listFromMap;
     }

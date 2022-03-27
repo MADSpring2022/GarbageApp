@@ -34,7 +34,6 @@ public class ListFragment extends Fragment {
         backButton = v.findViewById((R.id.back_button));
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
 
-        itemDB.initialize(getActivity());
 
         // RecyclerView setup
         RecyclerView itemList = v.findViewById(R.id.list_items);
@@ -89,10 +88,9 @@ public class ListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ItemHolder holder, int pos) {
-            String item = itemDB.getAll().get(pos);
+            String item = itemDB.getAsList().get(pos);
             holder.bind(item, pos);
         }
-
 
         @Override
         public int getItemCount() {
